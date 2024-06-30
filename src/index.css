@@ -38,8 +38,8 @@ body {
   justify-content: space-around;
   width: 100%;
   padding: 3em 3em 2em 3em;
-  background-color: rgba(255, 105, 180, 0.274);
-  box-shadow: 0.5em 0.5em 3em hotpink !important;
+  background-color: rgba(255, 105, 180, 0.233);
+  box-shadow: 0.5em 0.5em 3em rgba(255, 105, 180, 0.603) !important;
 }
 
 .material-symbols-outlined {
@@ -50,4 +50,28 @@ body {
 
 .cuerpo {
   padding: 5em 3em;
+}
+
+.navbar-nav {
+  display: flex !important;
+  justify-content: flex-end !important;
+  width: 100%;
+}
+
+.active {
+  color: hotpink !important;
+}
+
+nav {
+  padding: 0em 2em !important;
+}
+
+.nav-item {
+  padding: 0.5em 1.5em !important;
+}
+
+.nav-link:hover {
+  color: hotpink !important;
+  text-shadow: 0.2em 0.2em 0.3em hotpink;
+  margin-top: -0.2em;
 }

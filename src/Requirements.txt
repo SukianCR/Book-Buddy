@@ -23,5 +23,50 @@ fffeb5
 
 
 
+  {/* <Routes>
+          <Route path="/" element={<Books />} />
+
+          <Route path="/account" element={<Protected />}>
+            <Route path="/account" element={<Account />} />
+          </Route>
+
+          <Route path="/register" element={<RegisterLogin />} />
+
+          <Route path="/singleBook" element={<SingleBook />} />
+        </Routes> */}
+
+        {/* <Router>
+          <Routes>
+            <Route path="/" element={<Books />}></Route>
+            <Route path="/account" element={<Protected />}>
+              <Route path="/account" element={<Account />}></Route>
+            </Route>
+          </Routes>
+        </Router> */}
 
 
+
+
+
+import Navigations from "./components/Navigations";
+
+function App() {
+  // const [token, setToken] = useState(null);
+
+  return (
+    <>
+      <Navigations />
+      <div className="cabeza">
+        <span className="material-symbols-outlined">menu_book</span>
+        <h1 className="capriola-regular"> Book Buddy </h1>
+        <span className="material-symbols-outlined">local_library</span>
+      </div>
+
+      <div className="cuerpo">
+        <p>Aqui van las routes</p>
+      </div>
+    </>
+  );
+}
+
+export default App;

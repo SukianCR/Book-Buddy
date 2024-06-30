@@ -1,32 +1,34 @@
-import { useState } from "react";
-import bookLogo from "./assets/books.png";
+// import { useState } from "react";
+import { Routes, Route, Link } from "react-router-dom";
+import Account from "./components/Account";
+import Books from "./components/Books";
+// // import Login from "./components/Login";
+import RegisterLogin from "./components/RegisterLogin";
+// import SingleBook from "./components/SingleBook";
+import Protected from "./components/Protected";
+import Navigations from "./components/Navigations";
 
 function App() {
-  const [token, setToken] = useState(null);
+  // const [token, setToken] = useState(null);
 
   return (
     <>
+      <Navigations />
       <div className="cabeza">
         <span className="material-symbols-outlined">menu_book</span>
         <h1 className="capriola-regular"> Book Buddy </h1>
-
         <span className="material-symbols-outlined">local_library</span>
       </div>
 
       <div className="cuerpo">
-        <p>
-          Complete the React components needed to allow users to browse a
-          library catalog, check out books, review their account, and return
-          books that they have finished reading.
-        </p>
-        <p>
-          You may need to use the `token` in this top-level component in other
-          components that need to know if a user has logged in or not.
-        </p>
-        <p>
-          Don't forget to set up React Router to navigate between the different
-          views of your single page application!
-        </p>
+        <Routes>
+          <Route path="/" element={<Books />}></Route>
+          <Route path="/register" element={<RegisterLogin />}></Route>
+
+          <Route path="/account" element={<Protected />}>
+            <Route path="/account" element={<Account />}></Route>
+          </Route>
+        </Routes>
       </div>
     </>
   );
