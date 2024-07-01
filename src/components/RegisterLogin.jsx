@@ -12,27 +12,46 @@ export default function RegisterLogin() {
     password: "",
   });
 
+  const [credL, setCredL] = useState({
+    email: "",
+    password: "",
+  });
+
+  const [credR, setCredR] = useState({
+    email: "",
+    password: "",
+    firstName: "",
+    lastName: "",
+  });
+
   const [errM, setErrM] = useState(null);
+  const [errML, setErrML] = useState(null);
 
   const updateForm = (e) => {
     setForm((prev) => ({
       ...prev,
       [e.target.name]: e.target.value,
     }));
+    console.log(form);
   };
 
   const submit = async (e) => {
     e.preventDefault();
+
     try {
       let success = false;
-      success = await registerUser(form).unwrap();
+
+      if (e.target.name == "formRegister") {
+        success = await registerUser(form).unwrap();
+      } else {
+        // success = await registerUser(form).unwrap();
+      }
+
       if (success) {
         navigate("/account");
       }
     } catch (err) {
       setErrM(err.data.message);
-
-      console.log("cayo al error" + err.data.message);
     }
   };
 
@@ -44,28 +63,56 @@ export default function RegisterLogin() {
           If you already have an account, please log in. If not, then please
           register to create an account.
         </p>
-
-      
       </div>
 
       <div className="contenedor formularios">
         <div className="hotpink login">
           <p className="hotpink playwrite">Login</p>
-        </div>
 
-        <div className="hotpink register">
-          <p className="hotpink playwrite">Register</p>
-
-          <form onSubmit={submit}>
+          <form onSubmit={submit} name="formLogin">
             <div className="form-group">
               <label></label>
               <input
                 type="email"
                 className="form-control"
-                aria-describedby="emailHelp"
-                placeholder="Enter email"
+                placeholder="Email"
+                name="emailLogin"
+                onChange={updateForm}
+                required
+              />
+            </div>
+            <div className="form-group">
+              <label></label>
+              <input
+                type="password"
+                className="form-control"
+                placeholder="Password"
+                name="passwordLogin"
+                onChange={updateForm}
+                required
+              />
+            </div>
+            <button type="submit" className="btn btn-primary">
+              Submit
+            </button>
+          </form>
+
+          {errML && <p className="error">{errML}</p>}
+        </div>
+
+        <div className="hotpink register">
+          <p className="hotpink playwrite">Register</p>
+
+          <form onSubmit={submit} name="formRegister">
+            <div className="form-group">
+              <label></label>
+              <input
+                type="email"
+                className="form-control"
+                placeholder="Email"
                 name="email"
                 onChange={updateForm}
+                required
               />
             </div>
             <div className="form-group">
@@ -76,6 +123,7 @@ export default function RegisterLogin() {
                 placeholder="Password"
                 name="password"
                 onChange={updateForm}
+                required
               />
             </div>
 

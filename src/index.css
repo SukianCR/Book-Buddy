@@ -100,15 +100,11 @@ nav {
 .login,
 .register {
   /* border: hotpink 1px solid; */
-  padding: 3em 0em;
+  padding: 2em 0em;
   display: flex;
-  justify-content: center;
   flex-direction: column;
   width: 30%;
   border-radius: 0.3em;
-}
-
-.register {
   background-color: rgba(255, 105, 180, 0.158);
   border: 1px solid white !important;
 }
@@ -122,26 +118,19 @@ nav {
   padding: 0em 2em 2em 2em;
 }
 
-.register > form {
-  padding-bottom: 2em;
-}
-
-.register > * {
+.register > * , .login > * {
   width: 50%;
   margin: auto !important;
   text-align: center;
 }
 
 input {
-  background-color: #fffdd0a9 !important;
+  background-color: #fffdd088 !important;
 }
-.btn {
-  margin-top: 1em !important;
-}
-
+.btn{margin-top:2em;}
 input,
 .btn {
-  border: 1px solid white !important;
+  border: 1px solid whitesmoke !important;
 }
 
 .btn-primary {

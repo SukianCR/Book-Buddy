@@ -24,6 +24,15 @@ export const api = createApi({
       }),
       invalidateTags: ["user"],
     }),
+
+    login: builder.mutation({
+      query: (credentials) => ({
+        url: "/api/users/login",
+        method: "POST",
+        body: credentials,
+      }),
+      invalidateTags: ["user"],
+    }),
   }),
 });
 
@@ -39,10 +48,14 @@ const registerSlice = createSlice({
   reducers: {},
   extraReducers: (builder) => {
     builder.addMatcher(api.endpoints.register.matchFulfilled, storeToken);
+    builder.addMatcher(api.endpoints.login.matchFulfilled, storeToken);
   },
 });
 
 export const { useRegisterMutation } = api;
+
+export const { useLoginMutation } = api;
+
 export default registerSlice.reducer;
 
 export const getUser = (state) => state.register.user;
