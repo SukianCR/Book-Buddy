@@ -37,11 +37,17 @@ export default function RegisterLogin() {
         const em = form.emailLogin;
         const pass = form.passwordLogin;
 
-        setForm((prev) => ({
-          ...prev,
+        // setForm((prev) => ({
+        //   ...prev,
+        //   email: em,
+        //   password: pass,
+        // }));
+
+        setForm(() => ({
           email: em,
           password: pass,
         }));
+
         console.log(form);
         success = await loginUser(form).unwrap();
       }

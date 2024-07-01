@@ -11,25 +11,30 @@ export default function Account() {
   const [user, setUser] = useState({});
 
   console.log("el data es" + data);
-
-  const result = JSON.parse(data);
+  let result = {};
+  if (data) {
+    result = JSON.parse(data);
+  }
   // console.log(result);
   // console.log("books " + result.books);
 
   return (
     <div>
-      <h2 className="hotpink">My account</h2>
-      <p>Token</p>
-      <p>{token}</p>
 
+      <p> Welcome <h2 className="hotpink">{result.email}</h2></p>
+      {/* <p>Token</p>
+      <p>{token}</p> */}
       <p>{message}</p>
-      <ul>
-        <li>{result.id}</li>
-        <li>{result.email}</li>
-        <li>{result.firstname}</li>
-        <li>{result.lastname}</li>
-        <li>{result.books}</li>
-      </ul>
+      
+      {
+        <ul>
+          <li>{result.id}</li>
+          <li>{result.email}</li>
+          <li>{result.firstname}</li>
+          <li>{result.lastname}</li>
+          <li>{result.books}</li>
+        </ul>
+      }
     </div>
   );
 }

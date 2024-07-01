@@ -42,6 +42,15 @@ export const api = createApi({
       }),
       providesTags: ["user"],
     }),
+
+    getBooks: builder.query({
+      query: () => ({
+        url: "/api/books",
+        method: "GET",
+        responseHandler: (response) => response.text(),
+      }),
+      providesTags: ["books"],
+    }),
   }),
 });
 //         // body: credentials,
@@ -62,10 +71,16 @@ const registerSlice = createSlice({
     builder.addMatcher(api.endpoints.register.matchFulfilled, storeToken);
     builder.addMatcher(api.endpoints.login.matchFulfilled, storeToken);
     builder.addMatcher(api.endpoints.getMe.matchFulfilled, storeToken);
+    builder.addMatcher(api.endpoints.getBooks.matchFulfilled, storeToken);
   },
 });
 
-export const { useRegisterMutation, useLoginMutation , useGetMeQuery } = api;
+export const {
+  useRegisterMutation,
+  useLoginMutation,
+  useGetMeQuery,
+  useGetBooksQuery,
+} = api;
 
 // export const { useLoginMutation } = api;
 
