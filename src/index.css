@@ -20,14 +20,23 @@ body {
   color: hotpink;
 }
 
+.error {
+  color: hotpink;
+  padding: 1em;
+  border: yellowgreen 1px dashed;
+  font-size: 1em !important;
+  background-color: rgba(153, 205, 50, 0.199);
+}
+
 .material-symbols-outlined,
-.capriola-regular {
+.playwrite {
   color: #ff69b4;
 }
 
-.capriola-regular {
-  font-family: "Capriola", sans-serif;
-  font-weight: 400;
+.playwrite {
+  font-family: "Playwrite ES Deco", cursive;
+  font-optical-sizing: auto;
+  font-weight: 300;
   font-style: normal;
   text-shadow: 0.15em 0.15em 0.2em hotpink !important;
   /*  */
@@ -35,17 +44,19 @@ body {
 
 .cabeza {
   display: flex;
-  justify-content: space-around;
+  justify-content: center;
+  align-items: center;
   width: 100%;
-  padding: 3em 3em 2em 3em;
+  padding: 1em 3em;
   background-color: rgba(255, 105, 180, 0.233);
   box-shadow: 0.5em 0.5em 3em rgba(255, 105, 180, 0.603) !important;
 }
 
 .material-symbols-outlined {
-  font-variation-settings: "FILL" 0, "wght" 400, "GRAD" 0, "opsz" 24;
-  font-size: 3.5em;
-  text-shadow: 0.1em 0.1em 0.1em #ff69b4 !important;
+  font-variation-settings: "FILL" 0, "wght" 350, "GRAD" 0, "opsz" 24;
+  font-size: 2em;
+  text-shadow: 0.1em 0.1em 0.2em #ff69b4 !important;
+  padding: 0em 1em;
 }
 
 .cuerpo {
@@ -67,11 +78,73 @@ nav {
 }
 
 .nav-item {
-  padding: 0.5em 1.5em !important;
+  padding: 0.5em !important;
 }
 
 .nav-link:hover {
   color: hotpink !important;
   text-shadow: 0.2em 0.2em 0.3em hotpink;
   margin-top: -0.2em;
+}
+
+.contenedor {
+  display: flex;
+  justify-content: space-around;
+}
+
+.centro {
+  display: flex;
+  justify-content: center;
+}
+
+.login,
+.register {
+  /* border: hotpink 1px solid; */
+  padding: 3em 0em;
+  display: flex;
+  justify-content: center;
+  flex-direction: column;
+  width: 30%;
+  border-radius: 0.3em;
+}
+
+.register {
+  background-color: rgba(255, 105, 180, 0.158);
+  border: 1px solid white !important;
+}
+
+.login > p,
+.register > p {
+  font-size: 1.25em;
+}
+
+.legend {
+  padding: 0em 2em 2em 2em;
+}
+
+.register > form {
+  padding-bottom: 2em;
+}
+
+.register > * {
+  width: 50%;
+  margin: auto !important;
+  text-align: center;
+}
+
+input {
+  background-color: #fffdd0a9 !important;
+}
+.btn {
+  margin-top: 1em !important;
+}
+
+input,
+.btn {
+  border: 1px solid white !important;
+}
+
+.btn-primary {
+  background-color: #ff69b4 !important;
+  color: #fffdd0 !important;
 }
