@@ -69,8 +69,8 @@ export default function RegisterLogin() {
       <div className="centro">
         <p className="legend">
           {" "}
-          If you already have an account, please log in. If not, then please
-          register to create an account.
+          If you already have an account, please log in. If not, please register
+          to create an account.
         </p>
       </div>
 
@@ -78,7 +78,7 @@ export default function RegisterLogin() {
         <div className="hotpink login">
           <p className="hotpink playwrite">Login</p>
 
-          <form onSubmit={submit} name="formLogin">
+          <form onSubmit={submit} name="formLogin" className="sube_poco">
             <div className="form-group">
               <label></label>
               <input

@@ -47,9 +47,12 @@ body {
   justify-content: center;
   align-items: center;
   width: 100%;
-  padding: 1em 3em;
-  background-color: rgba(255, 105, 180, 0.233);
-  box-shadow: 0.5em 0.5em 3em rgba(255, 105, 180, 0.603) !important;
+  padding: 2em;
+  background-color: rgba(255, 105, 180, 0.25);
+  box-shadow: 0.5em 0.5em 4em rgba(255, 105, 180, 0.5) !important;
+  /* rgba(255, 105, 180, 0.25) 0%,
+  rgba(233, 231, 0, 0.25) 50%,
+  rgba(46, 233, 17, 0.2) 100% */
 }
 
 .material-symbols-outlined {
@@ -60,7 +63,17 @@ body {
 }
 
 .cuerpo {
-  padding: 5em 3em;
+  padding: 3em 1em;
+  /* background: rgb(255, 105, 180);
+  background: linear-gradient(
+    90deg,
+    rgba(255, 105, 180, 0.15) 0%,
+    rgba(233, 231, 0, 0.15) 50%,
+    rgba(46, 233, 17, 0.15) 100%
+  ); */
+  border-radius: 0.3em;
+  /* box-shadow: 0.5em 0.5em 3em rgba(255, 105, 180, 0.4) !important; */
+  box-shadow: 0.5em 0.5em 1em rgba(255, 105, 180, 1);
 }
 
 .navbar-nav {
@@ -115,7 +128,7 @@ nav {
 }
 
 .legend {
-  padding: 0em 2em 2em 2em;
+  padding: 2em;
 }
 
 .register > *,
@@ -126,7 +139,7 @@ nav {
 }
 
 input {
-  background-color: #fffdd088 !important;
+  background-color: #fffdd03f !important;
 }
 .btn {
   margin-top: 2em;
@@ -146,23 +159,61 @@ input,
 }
 
 .all-books {
-  display: flex;
-  flex-flow: row wrap;
   list-style: none;
-  padding: 0;
 }
 
-.all-books > li {
-  flex: 1 0 22%;
+.player-card {
+  /* flex: 1 0 1%; */
   /* max-height: 30px;*/
-  margin: 1em;
-  padding: 2em;
+  margin: 2em;
+  padding: 3em 2em;
   border: 1px solid white;
-  border-radius: 2px;
-  overflow: auto;
-  background-color: rgba(245, 245, 245, 0.5);
+  border-radius: 0.3em;
+  /* overflow: auto; */
+  background-color: rgba(245, 245, 245, 0.3);
+  list-style: none !important;
+
+  width: 45%;
+  display: flex;
+  float: left;
 }
 
-.all-books > li > img {
-  max-width: 300px;
+img {
+  width: 40% !important;
+}
+
+main {
+  display: flex;
+
+  /* border: 1px solid greenyellow; */
+  padding: 2em;
+  
+}
+
+.player-details {
+  flex-direction: column; /* The details are arranged in a column. */
+  align-items: center; /* The details are centered along the vertical axis. */
+  justify-content: center; /* The details are centered along the horizontal axis. */
+  color: #000; /* The color of the details text. */
+  font-size: 1em; /* The size of the details text. */
+  text-align: center; /* The details text is centered. */
+  padding: 2em;
+}
+
+.center {
+  display: flex;
+  justify-content: center;
+}
+
+.author {
+  font-style: italic;
+}
+
+.desc {
+  text-align: justify !important;
+  padding-top: 1.5em;
+}
+
+.sube_poco {
+  margin-top: -2em !important;
 }

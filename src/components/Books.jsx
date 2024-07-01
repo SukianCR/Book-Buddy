@@ -20,11 +20,12 @@ export default function Books() {
   }, [isSuccess]);
 
   return (
-    <div>
-      <h2 className="hotpink">Books</h2>
+   <>
+     <div className="center"><p className="legend" >Take a look into our book collection</p></div>
 
       <main>
-        <ul className="all_books">
+      <div className="center" > 
+        <ul className="all-books">
           {isSuccess &&
             books.map((book) => {
               return (
@@ -35,16 +36,17 @@ export default function Books() {
                     className="player-image"
                   />
                   <div className="player-details">
-                    <p className="nameSh">{book.title}</p>
-                    <p>{book.author}</p>
-                    <p>{book.description}</p>
+                    <h4 className="hotpink {
+">{book.title}</h4>
+                    <p className="author">{book.author}</p>
+                    <p className="desc">{book.description}</p>
                     <p>{book.available}</p>
                   </div>
                 </li>
               );
             })}
-        </ul>
+        </ul></div>
       </main>
-    </div>
+      </>
   );
 }
