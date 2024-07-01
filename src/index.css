@@ -48,8 +48,8 @@ body {
   align-items: center;
   width: 100%;
   padding: 2em;
-  background-color: rgba(255, 105, 180, 0.25);
-  box-shadow: 0em 0em 4em rgba(255, 105, 180, 0.5) !important;
+  background-color: rgba(255, 105, 180, 0.2);
+  box-shadow: 0em 0em 4em rgba(255, 105, 180, 0.4) !important;
   /* rgba(255, 105, 180, 0.25) 0%,
   rgba(233, 231, 0, 0.25) 50%,
   rgba(46, 233, 17, 0.2) 100% */
@@ -164,7 +164,7 @@ input,
 .player-card {
   /* flex: 1 0 1%; */
   /* max-height: 30px;*/
-  margin: 2em;
+  margin: 1em 2em;
   padding: 3em 2em;
   /* border: 1px solid white; */
   border-radius: 0.3em;
@@ -188,7 +188,7 @@ main {
   display: flex;
 
   /* border: 1px solid greenyellow; */
-  padding: 2em;
+  /* padding: 2em; */
 }
 
 .player-details {
@@ -217,4 +217,8 @@ main {
 
 .sube_poco {
   margin-top: -2em !important;
+}
+
+.formularios {
+  margin-top: 1em;
 }
