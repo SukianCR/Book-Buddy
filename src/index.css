@@ -65,7 +65,7 @@ body {
 
 .navbar-nav {
   display: flex !important;
-  justify-content: flex-end !important;
+  justify-content: center !important;
   width: 100%;
 }
 
@@ -118,7 +118,8 @@ nav {
   padding: 0em 2em 2em 2em;
 }
 
-.register > * , .login > * {
+.register > *,
+.login > * {
   width: 50%;
   margin: auto !important;
   text-align: center;
@@ -127,7 +128,9 @@ nav {
 input {
   background-color: #fffdd088 !important;
 }
-.btn{margin-top:2em;}
+.btn {
+  margin-top: 2em;
+}
 input,
 .btn {
   border: 1px solid whitesmoke !important;
@@ -136,4 +139,8 @@ input,
 .btn-primary {
   background-color: #ff69b4 !important;
   color: #fffdd0 !important;
+}
+
+.space {
+  padding: 0.5em;
 }

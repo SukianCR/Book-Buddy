@@ -33,11 +33,23 @@ export const api = createApi({
       }),
       invalidateTags: ["user"],
     }),
+
+    getMe: builder.query({
+      query: () => ({
+        url: "/api/users/me",
+        method: "GET",
+        responseHandler: (response) => response.text(),
+      }),
+      providesTags: ["user"],
+    }),
   }),
 });
+//         // body: credentials,
 
 const storeToken = (state, { payload }) => {
   state.token = payload.token;
+  state.message = payload.message;
+  state.user = payload.user;
 };
 
 const initialState = { user: {} };
@@ -49,12 +61,13 @@ const registerSlice = createSlice({
   extraReducers: (builder) => {
     builder.addMatcher(api.endpoints.register.matchFulfilled, storeToken);
     builder.addMatcher(api.endpoints.login.matchFulfilled, storeToken);
+    builder.addMatcher(api.endpoints.getMe.matchFulfilled, storeToken);
   },
 });
 
-export const { useRegisterMutation } = api;
+export const { useRegisterMutation, useLoginMutation , useGetMeQuery } = api;
 
-export const { useLoginMutation } = api;
+// export const { useLoginMutation } = api;
 
 export default registerSlice.reducer;
 

@@ -2,26 +2,16 @@
 import { useState } from "react";
 import { useNavigate } from "react-router-dom";
 import { useRegisterMutation } from "./../api";
+import { useLoginMutation } from "./../api";
 
 export default function RegisterLogin() {
   const [registerUser] = useRegisterMutation();
+  const [loginUser] = useLoginMutation();
 
   const navigate = useNavigate();
   const [form, setForm] = useState({
     email: "",
     password: "",
-  });
-
-  const [credL, setCredL] = useState({
-    email: "",
-    password: "",
-  });
-
-  const [credR, setCredR] = useState({
-    email: "",
-    password: "",
-    firstName: "",
-    lastName: "",
   });
 
   const [errM, setErrM] = useState(null);
@@ -32,7 +22,7 @@ export default function RegisterLogin() {
       ...prev,
       [e.target.name]: e.target.value,
     }));
-    console.log(form);
+    // console.log(form);
   };
 
   const submit = async (e) => {
@@ -44,14 +34,27 @@ export default function RegisterLogin() {
       if (e.target.name == "formRegister") {
         success = await registerUser(form).unwrap();
       } else {
-        // success = await registerUser(form).unwrap();
+        const em = form.emailLogin;
+        const pass = form.passwordLogin;
+
+        setForm((prev) => ({
+          ...prev,
+          email: em,
+          password: pass,
+        }));
+        console.log(form);
+        success = await loginUser(form).unwrap();
       }
 
       if (success) {
         navigate("/account");
       }
     } catch (err) {
-      setErrM(err.data.message);
+      if (e.target.name == "formRegister") {
+        setErrM(err.data.message);
+      } else {
+        setErrML(err.data.message);
+      }
     }
   };
 
@@ -77,6 +80,7 @@ export default function RegisterLogin() {
                 className="form-control"
                 placeholder="Email"
                 name="emailLogin"
+                // value="rebeca@gmail.com"
                 onChange={updateForm}
                 required
               />
@@ -87,17 +91,23 @@ export default function RegisterLogin() {
                 type="password"
                 className="form-control"
                 placeholder="Password"
+                // value="rebe"
                 name="passwordLogin"
                 onChange={updateForm}
                 required
               />
             </div>
             <button type="submit" className="btn btn-primary">
-              Submit
+              Login
             </button>
           </form>
 
-          {errML && <p className="error">{errML}</p>}
+          {errML && (
+            <div>
+              <p className="space"></p>
+              <p className="error">{errML}</p>
+            </div>
+          )}
         </div>
 
         <div className="hotpink register">
@@ -149,10 +159,15 @@ export default function RegisterLogin() {
               />
             </div>
             <button type="submit" className="btn btn-primary">
-              Submit
+              Register
             </button>
           </form>
-          {errM && <p className="error">{errM}</p>}
+          {errM && (
+            <div>
+              <p className="space"></p>
+              <p className="error">{errM}</p>
+            </div>
+          )}
         </div>
       </div>
     </>
