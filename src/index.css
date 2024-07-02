@@ -130,7 +130,8 @@ nav {
   padding: 1.8em;
 } */
 
-.verde .legend {
+.verde,
+.legend {
   text-align: center !important;
 }
 
@@ -234,6 +235,7 @@ main {
 .verde {
   color: yellowgreen;
   font-size: 0.8em;
+  text-align: center !important;
 }
 
 .tempMsgBox {
@@ -241,4 +243,5 @@ main {
   flex-direction: column;
   justify-content: center;
   width: 60% !important;
+  padding: 1em;
 }

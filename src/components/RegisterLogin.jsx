@@ -79,8 +79,8 @@ export default function RegisterLogin() {
           </p>
           <p className="verde author">
             The login form works, just have to click the login button 2 times
-            and ignore the error message - for now . The register form works it
-            just that it send you back here to login. -for now.
+            and ignore the error message - for now . The register form works, it
+            just that it sends you back here to login. -for now.
           </p>
         </div>
       </div>
