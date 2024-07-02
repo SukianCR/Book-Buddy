@@ -26,8 +26,14 @@ export default function Navigations() {
         </li>
 
         <li className="nav-item ">
-          <Link className="nav-link " to="/account">
-            Log in/ Register
+          <Link className="nav-link " to="/login">
+            Log in
+          </Link>
+        </li>
+
+        <li className="nav-item ">
+          <Link className="nav-link " to="/register">
+            Register
           </Link>
         </li>
       </ul>

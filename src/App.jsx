@@ -3,6 +3,9 @@ import { Routes, Route, Link } from "react-router-dom";
 import Account from "./components/Account";
 import Books from "./components/Books";
 import RegisterLogin from "./components/RegisterLogin";
+import Register from "./components/Register";
+import Login from "./components/Login";
+
 import Protected from "./components/Protected";
 import Navigations from "./components/Navigations";
 import Cabeza from "./components/Cabeza";
@@ -21,7 +24,10 @@ function App() {
         <div className="cuerpo">
           <Routes>
             <Route path="/" element={<Books />}></Route>
-            <Route path="/register" element={<RegisterLogin />}></Route>
+            <Route path="/login-register" element={<RegisterLogin />}></Route>
+
+            <Route path="/register" element={<Register />}></Route>
+            <Route path="/login" element={<Login />}></Route>
 
             <Route path="/account" element={<Protected />}>
               <Route path="/account" element={<Account />}></Route>

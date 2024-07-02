@@ -7,8 +7,9 @@ export default function Protected() {
   console.log("token-> " + token);
 
   if (!token) {
-    return <Navigate to="/register" />;
+    return <Navigate to="/login" />;
+  } else {
+    // return <Navigate to="/account" />;
+    return <Outlet />;
   }
-  console.log("entro en protected");
-  return <Outlet />;
 }

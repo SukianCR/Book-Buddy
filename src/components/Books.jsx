@@ -11,8 +11,8 @@ export default function Books() {
     <>
       {selectedBookId ? (
         <SelectedBook
-          setSelectedBookId={setSelectedBookId}
-          selectedBookId={selectedBookId}
+        setSelectedBookId={setSelectedBookId}
+        selectedBookId={selectedBookId}
         />
       ) : (
         <BookList setSelectedBookId={setSelectedBookId} />

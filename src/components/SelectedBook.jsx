@@ -14,10 +14,6 @@ export default function SelectedBook({ setSelectedBookId, selectedBookId }) {
     }
   }, [isSuccess]);
 
-  const volver = () => {
-    setSelectedBookId(null);
-  };
-
   return (
     <>
       {" "}
@@ -47,8 +43,10 @@ export default function SelectedBook({ setSelectedBookId, selectedBookId }) {
 
             <button
               className="btn btn-primary "
-              // onClick={() => setSelectedBookId(null)}
-              onClick={() => volver()}
+              onClick={() => {
+                setSelectedBookId(null);
+                console.log(selectedBookId);
+              }}
             >
               Go Back
             </button>

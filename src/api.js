@@ -40,7 +40,7 @@ export const api = createApi({
         method: "GET",
         responseHandler: (response) => response.text(),
       }),
-      providesTags: ["User"],
+      providesTags: ["books"],
     }),
 
     getBooks: builder.query({
@@ -83,13 +83,13 @@ const registerSlice = createSlice({
     builder.addMatcher(api.endpoints.register.matchFulfilled, storeToken);
     builder.addMatcher(api.endpoints.login.matchFulfilled, storeToken);
 
-    builder.addMatcher(
-      api.endpoints.getMe.matchFulfilled,
-      (state, { payload }) => {
-        return JSON.parse(payload);
-      }
-    );
-
+    // builder.addMatcher(
+    //   api.endpoints.getMe.matchFulfilled,
+    //   (state, { payload }) => {
+    //     return JSON.parse(payload);
+    //   }
+    // );
+    builder.addMatcher(api.endpoints.getMe.matchFulfilled, storeToken);
     builder.addMatcher(api.endpoints.getBooks.matchFulfilled, storeToken);
     builder.addMatcher(api.endpoints.getBook.matchFulfilled, storeToken);
   },

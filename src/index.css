@@ -58,9 +58,17 @@ body {
 .material-symbols-outlined {
   font-variation-settings: "FILL" 0, "wght" 350, "GRAD" 0, "opsz" 24;
   font-size: 2em;
-  text-shadow: 0.1em 0.1em 0.2em #ff69b4 !important;
+  text-shadow: 0.1em 0.1em 0.2em hotpink !important;
+  /* padding: 0em 1em; */
+}
+
+.icono-verde {
+  font-variation-settings: "FILL" 0, "wght" 350, "GRAD" 0, "opsz" 24;
+  font-size: 2em;
+  text-shadow: 0.1em 0.1em 0.2em yellowgreen !important;
   padding: 0em 1em;
 }
+
 
 .cuerpo {
   padding: 2em 1em;
@@ -106,6 +114,8 @@ nav {
 .centro {
   display: flex;
   justify-content: center;
+  
+  align-items: center;
 }
 
 .login,
@@ -126,9 +136,20 @@ nav {
   font-size: 1.25em;
 }
 
-/* .legend {
-  padding: 1.8em;
-} */
+.temp_message{
+  display: flex;
+  justify-content: center;
+  width: 50%;
+  padding-top: 1em;;
+}
+.legend {
+  margin-top:0.3em;
+  padding-left: 1em;
+}
+.verde {
+  color: yellowgreen;
+  font-size: 0.8em;
+}
 
 .verde,
 .legend {
@@ -159,7 +180,7 @@ input,
 }
 
 .space {
-  padding: 0.5em;
+  padding: 0.7em;
 }
 
 .all-books {
@@ -232,16 +253,11 @@ main {
   margin-top: 1em;
 }
 
-.verde {
-  color: yellowgreen;
-  font-size: 0.8em;
-  text-align: center !important;
+.formulario_solo {
+  margin-top: 2em;
 }
 
-.tempMsgBox {
-  display: flex;
-  flex-direction: column;
-  justify-content: center;
-  width: 60% !important;
-  padding: 1em;
+
+.sides-space{
+  padding: 0em 1em;
 }

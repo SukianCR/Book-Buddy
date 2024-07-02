@@ -28,9 +28,6 @@ export default function RegisterLogin() {
     }));
   };
 
-  // const updateToken = (nToken) => {
-  //   dispatch(updateToken(nToken));
-  // };
 
   const submit = async (e) => {
     e.preventDefault();
