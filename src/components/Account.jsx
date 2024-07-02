@@ -25,18 +25,25 @@ export default function Account() {
   }, [isSuccess]);
 
   return (
-    <div>
-      {" "}
-      <ul>
-        <li>{user.id}</li>
-        <li>{user.email}</li>
-        <li>{user.firstname}</li>
-        <li>{user.lastname}</li>
-        <li>{user.books}</li>
-      </ul>
+    <div className="centro">
+      <h4 className="space-m playwrite usr-email">{user.email}</h4>
     </div>
   );
 }
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 // const getMe = async () => {
 //   try {
 //     let success = false;
