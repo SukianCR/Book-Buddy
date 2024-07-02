@@ -48,20 +48,18 @@ export default function Register() {
 
   return (
     <>
-
-<div className="centro ">
+      <div className="centro ">
         <div className="temp_message">
-        <span className="material-symbols-outlined">grade</span>
+          <span className="material-symbols-outlined">grade</span>
 
-        <p className="legend">
-          This form works but it will take you to the login page. Log in and it will take you to the users page.  - for now
-        </p>
-
+          <p className="legend">
+            This form works but it will take you to the login page after
+            registering where you then login to access your account page.
+          </p>
         </div>
-
       </div>
       <div className="space"></div>
-      
+
       <div className="contenedor formulario_solo">
         <div className="hotpink register">
           <p className="hotpink playwrite">Register</p>

@@ -4,7 +4,7 @@ import { useEffect, useState } from "react";
 import { useGetBooksQuery } from "./../api";
 import BookLi from "./BookLi";
 
-export default function BooksList({setSelectedBookId}) {
+export default function BooksList({ setSelectedBookId }) {
   const [books, setBooks] = useState([]);
   const { data, isSuccess } = useGetBooksQuery();
 
@@ -12,36 +12,31 @@ export default function BooksList({setSelectedBookId}) {
     if (isSuccess) {
       const result = JSON.parse(data);
 
-      
       setBooks(result.books);
-      
     }
   }, [isSuccess]);
 
   return (
-   
-   <>
-   
-   
-
-   
-   
-     <div className="center"><p className="legend" >Take a look into our book collection</p></div>
+    <>
+      <div className="center">
+        <p className="legend-books">Take a look into our book collection</p>
+      </div>
       <main>
-      <div className="center" > 
-        <ul className="all-books">
-          {isSuccess &&
-            books.map((book) => {
-              return (
-                <BookLi
-                key={book.id}
-                setSelectedBookId={setSelectedBookId}
-                book={book}
-              />
-              );
-            })}
-        </ul></div>
+        <div className="center">
+          <ul className="all-books">
+            {isSuccess &&
+              books.map((book) => {
+                return (
+                  <BookLi
+                    key={book.id}
+                    setSelectedBookId={setSelectedBookId}
+                    book={book}
+                  />
+                );
+              })}
+          </ul>
+        </div>
       </main>
-      </>
+    </>
   );
 }

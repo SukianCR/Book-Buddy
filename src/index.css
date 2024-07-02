@@ -69,7 +69,6 @@ body {
   padding: 0em 1em;
 }
 
-
 .cuerpo {
   padding: 2em 1em;
   /* background: rgb(255, 105, 180);
@@ -114,7 +113,7 @@ nav {
 .centro {
   display: flex;
   justify-content: center;
-  
+
   align-items: center;
 }
 
@@ -136,16 +135,21 @@ nav {
   font-size: 1.25em;
 }
 
-.temp_message{
+.temp_message {
   display: flex;
   justify-content: center;
   width: 50%;
-  padding-top: 1em;;
+  padding-top: 1em;
 }
 .legend {
-  margin-top:0.3em;
+  margin-top: 0.5em;
   padding-left: 1em;
 }
+
+.legend-books {
+  margin: 2.5em;
+}
+
 .verde {
   color: yellowgreen;
   font-size: 0.8em;
@@ -257,7 +261,10 @@ main {
   margin-top: 2em;
 }
 
-
-.sides-space{
+.sides-space {
   padding: 0em 1em;
+}
+
+.logo {
+  text-decoration: none;
 }
