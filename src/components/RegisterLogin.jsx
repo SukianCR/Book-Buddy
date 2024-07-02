@@ -76,6 +76,10 @@ export default function RegisterLogin() {
           If you already have an account, please log in. If not, please register
           to create an account.
         </p>
+        <p className="hotpink">
+          The login form works just have to click the login button 2 times and
+          ignore the error message, for now
+        </p>
       </div>
 
       <div className="contenedor formularios">
