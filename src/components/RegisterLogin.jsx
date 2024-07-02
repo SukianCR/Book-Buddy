@@ -71,15 +71,18 @@ export default function RegisterLogin() {
   return (
     <>
       <div className="centro">
-        <p className="legend">
-          {" "}
-          If you already have an account, please log in. If not, please register
-          to create an account.
-        </p>
-        <p className="hotpink">
-          The login form works just have to click the login button 2 times and
-          ignore the error message, for now
-        </p>
+        <div className="tempMsgBox">
+          <p className="legend">
+            {" "}
+            If you already have an account, please log in. If not, please
+            register to create an account.{" "}
+          </p>
+          <p className="verde author">
+            The login form works, just have to click the login button 2 times
+            and ignore the error message - for now . The register form works it
+            just that it send you back here to login. -for now.
+          </p>
+        </div>
       </div>
 
       <div className="contenedor formularios">

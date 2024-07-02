@@ -126,8 +126,12 @@ nav {
   font-size: 1.25em;
 }
 
-.legend {
+/* .legend {
   padding: 1.8em;
+} */
+
+.verde .legend {
+  text-align: center !important;
 }
 
 .register > *,
@@ -225,4 +229,16 @@ main {
 
 .formularios {
   margin-top: 1em;
+}
+
+.verde {
+  color: yellowgreen;
+  font-size: 0.8em;
+}
+
+.tempMsgBox {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  width: 60% !important;
 }
