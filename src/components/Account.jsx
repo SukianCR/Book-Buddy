@@ -6,26 +6,27 @@ import { useGetMeQuery } from "./../api";
 export default function Account() {
   const token = useSelector((state) => state.register.token);
   const message = useSelector((state) => state.register.message);
-
+  const [result, setResult] = useState({});
   const { data, isSuccess } = useGetMeQuery();
-  const [user, setUser] = useState({});
 
-  console.log("el data es" + data);
-  let result = {};
-  if (data) {
-    result = JSON.parse(data);
-  }
-  // console.log(result);
-  // console.log("books " + result.books);
+  useEffect(() => {
+    if (isSuccess) {
+      const result = JSON.parse(data);
+      setResult(result);
+    }
+  }, [isSuccess]);
 
   return (
     <div>
-
-      <p> Welcome <h2 className="hotpink">{result.email}</h2></p>
+      <p>
+        {" "}
+        Welcome <h2 className="hotpink">{result.email}</h2>
+      </p>
       {/* <p>Token</p>
       <p>{token}</p> */}
       <p>{message}</p>
-      
+      <p>{token}</p>
+
       {
         <ul>
           <li>{result.id}</li>

@@ -22,7 +22,7 @@ export const api = createApi({
         method: "POST",
         body: credentials,
       }),
-      invalidateTags: ["user"],
+      invalidateTags: ["User"],
     }),
 
     login: builder.mutation({
@@ -31,7 +31,7 @@ export const api = createApi({
         method: "POST",
         body: credentials,
       }),
-      invalidateTags: ["user"],
+      invalidateTags: ["User"],
     }),
 
     getMe: builder.query({
@@ -40,7 +40,7 @@ export const api = createApi({
         method: "GET",
         responseHandler: (response) => response.text(),
       }),
-      providesTags: ["user"],
+      providesTags: ["User"],
     }),
 
     getBooks: builder.query({
@@ -51,14 +51,22 @@ export const api = createApi({
       }),
       providesTags: ["books"],
     }),
+
+    getBook: builder.query({
+      query: (bookId) => ({
+        url: `/api/books/${bookId}`,
+        method: "GET",
+        responseHandler: (response) => response.text(),
+      }),
+      providesTags: ["books"],
+    }),
   }),
 });
-//         // body: credentials,
+//
 
 const storeToken = (state, { payload }) => {
   state.token = payload.token;
   state.message = payload.message;
-  state.user = payload.user;
 };
 
 const initialState = { user: {} };
@@ -66,12 +74,24 @@ const initialState = { user: {} };
 const registerSlice = createSlice({
   name: "register",
   initialState,
-  reducers: {},
+  reducers: {
+    setToken: (state, { payload }) => {
+      state.token = payload;
+    },
+  },
   extraReducers: (builder) => {
     builder.addMatcher(api.endpoints.register.matchFulfilled, storeToken);
     builder.addMatcher(api.endpoints.login.matchFulfilled, storeToken);
-    builder.addMatcher(api.endpoints.getMe.matchFulfilled, storeToken);
+
+    builder.addMatcher(
+      api.endpoints.getMe.matchFulfilled,
+      (state, { payload }) => {
+        return JSON.parse(payload);
+      }
+    );
+
     builder.addMatcher(api.endpoints.getBooks.matchFulfilled, storeToken);
+    builder.addMatcher(api.endpoints.getBook.matchFulfilled, storeToken);
   },
 });
 
@@ -80,10 +100,10 @@ export const {
   useLoginMutation,
   useGetMeQuery,
   useGetBooksQuery,
+  useGetBookQuery,
 } = api;
 
-// export const { useLoginMutation } = api;
-
+export const { setToken } = registerSlice.actions;
 export default registerSlice.reducer;
 
 export const getUser = (state) => state.register.user;

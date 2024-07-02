@@ -10,7 +10,7 @@ import store from "./store.js";
 import { Provider } from "react-redux";
 
 function App() {
-  const [token, setToken] = useState(null);
+  // const [token, setToken] = useState(null);
 
   return (
     <Provider store={store}>

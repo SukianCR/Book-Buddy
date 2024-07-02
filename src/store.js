@@ -6,7 +6,6 @@ const store = configureStore({
   reducer: {
     [api.reducerPath]: api.reducer,
     register: registerReducer,
-    //register,
   },
   middleware: (getDefaultMiddleware) =>
     getDefaultMiddleware().concat(api.middleware),

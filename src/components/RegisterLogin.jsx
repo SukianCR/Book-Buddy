@@ -3,11 +3,14 @@ import { useState } from "react";
 import { useNavigate } from "react-router-dom";
 import { useRegisterMutation } from "./../api";
 import { useLoginMutation } from "./../api";
+import { useSelector, useDispatch } from "react-redux";
+import { setToken } from "./../api";
+
+import { Navigate, Outlet } from "react-router-dom";
 
 export default function RegisterLogin() {
   const [registerUser] = useRegisterMutation();
   const [loginUser] = useLoginMutation();
-
   const navigate = useNavigate();
   const [form, setForm] = useState({
     email: "",
@@ -16,14 +19,18 @@ export default function RegisterLogin() {
 
   const [errM, setErrM] = useState(null);
   const [errML, setErrML] = useState(null);
+  const dispatch = useDispatch();
 
   const updateForm = (e) => {
     setForm((prev) => ({
       ...prev,
       [e.target.name]: e.target.value,
     }));
-    // console.log(form);
   };
+
+  // const updateToken = (nToken) => {
+  //   dispatch(updateToken(nToken));
+  // };
 
   const submit = async (e) => {
     e.preventDefault();
@@ -34,30 +41,27 @@ export default function RegisterLogin() {
       if (e.target.name == "formRegister") {
         success = await registerUser(form).unwrap();
       } else {
-        const em = form.emailLogin;
-        const pass = form.passwordLogin;
-
-        // setForm((prev) => ({
-        //   ...prev,
-        //   email: em,
-        //   password: pass,
-        // }));
+        const em = e.target.elements.emailLogin.value;
+        const pass = e.target.elements.passwordLogin.value;
 
         setForm(() => ({
           email: em,
           password: pass,
         }));
 
-        console.log(form);
         success = await loginUser(form).unwrap();
       }
 
+      console.log("sux es" + success);
+
       if (success) {
+        dispatch(setToken(success.token));
         navigate("/account");
       }
     } catch (err) {
       if (e.target.name == "formRegister") {
-        setErrM(err.data.message);
+        // setErrM(err.data.message);
+        console.log(err);
       } else {
         setErrML(err.data.message);
       }
