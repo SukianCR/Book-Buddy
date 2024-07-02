@@ -12,6 +12,7 @@ export default function Account() {
   console.log(token, message);
 
   const [user, setUser] = useState({});
+  const [books, setBooks] = useState({});
   const { data, isSuccess } = useGetMeQuery();
 
   useEffect(() => {
@@ -24,25 +25,19 @@ export default function Account() {
     }
   }, [isSuccess]);
 
+  setBooks[user.books];
+  console.log(books);
+
   return (
-    <div className="centro">
-      <h4 className="space-m playwrite usr-email">{user.email}</h4>
-    </div>
+    <>    <div className="centro">
+      
+      <h4 className="space-m playwrite usr-email">{user.email}</h4> </div>
+     <div className="centro"> <p>Checked out books: 0</p> </div>
+      {/* {books.length == 0 && <h2>You have {books.length} books checked out.</h2>} */}
+      </>
+
   );
 }
-
-
-
-
-
-
-
-
-
-
-
-
-
 
 // const getMe = async () => {
 //   try {
