@@ -45,7 +45,7 @@ export default function SelectedBook({ setSelectedBookId, selectedBookId }) {
               className="btn btn-primary "
               onClick={() => {
                 setSelectedBookId(null);
-                console.log(selectedBookId);
+               // console.log(selectedBookId);
               }}
             >
               Go Back

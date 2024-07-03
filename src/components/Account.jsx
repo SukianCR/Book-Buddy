@@ -1,42 +1,60 @@
 /* TODO - add your code to create a functional React component that renders account details for a logged in user. Fetch the account data from the provided API. You may consider conditionally rendering a message for other users that prompts them to log in or create an account.  */
 
 import { useEffect, useState } from "react";
-import { useGetMeQuery } from "./../api";
 import { useSelector, useDispatch } from "react-redux";
 import { setToken } from "./../api";
+import { useGetMeQuery } from "./../api";
+import { useGetMeBooksQuery } from "./../api";
 
-export default function Account() {
-  const token = useSelector((state) => state.register.token);
-  const message = useSelector((state) => state.register.message);
-  //si llega hasta aca, falta desplegar la info
-  console.log(token, message);
+export default function Account({ user, setUser }) {
+  console.log("viene user", user);
+  // if (!user) {
+  //   return <>No hay user</>;
+  // } else {
+  //   return (
+  //     <>
+  //       {user.token} - {user.email}
+  //     </>
+  //   );
+  // }
+  // const token = useSelector((state) => state.register.token);
+  // const message = useSelector((state) => state.register.message);
 
-  const [user, setUser] = useState({});
-  const [books, setBooks] = useState({});
-  const { data, isSuccess } = useGetMeQuery();
+  // console.log(token, message);
 
-  useEffect(() => {
-    if (isSuccess) {
-      const result = JSON.parse(data);
+  // const [meBooks, setMeBooks] = useState([]);
+  // const { data, isSuccess } = useGetMeQuery();
+  // const { dataMeBooks, isSuccessMeBooks } = useGetMeBooksQuery();
 
-      setUser(result);
-      //  console.log(user);
-      console.log(result);
-    }
-  }, [isSuccess]);
+  // useEffect(() => {
+  //   if (isSuccess) {
+  //     const result = JSON.parse(data);
 
-  setBooks[user.books];
-  console.log(books);
+  //     setUser(result);
+  //   }
+  //   if (isSuccessMeBooks) {
+  //     const resultMeBooks = JSON.parse(dataMeBooks);
+  //     setMeBooks(resultMeBooks);
+  //   }
+  // }, [isSuccess, isSuccessMeBooks, data, dataMeBooks]);
 
-  return (
-    <>    <div className="centro">
-      
-      <h4 className="space-m playwrite usr-email">{user.email}</h4> </div>
-     <div className="centro"> <p>Checked out books: 0</p> </div>
-      {/* {books.length == 0 && <h2>You have {books.length} books checked out.</h2>} */}
-      </>
+  // console.log("user es", user.email);
 
-  );
+  // console.log("user books son ", meBooks);
+
+  // return (
+  //   <>
+  //     <div className="centro">
+  //       <h4 className="space-m playwrite usr-email">{user.email}</h4>{" "}
+  //     </div>
+  //     <div className="centro">
+  //       {meBooks.length > 0 &&
+  //         meBooks.map((book) => {
+  //           return <p key={book.id}> {book.title} </p>;
+  //         })}
+  //     </div>
+  //   </>
+  // );
 }
 
 // const getMe = async () => {

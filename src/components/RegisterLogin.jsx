@@ -49,7 +49,7 @@ export default function RegisterLogin() {
         success = await loginUser(form).unwrap();
       }
 
-      console.log("sux es" + success);
+    //  console.log("sux es" + success);
 
       if (success) {
         dispatch(setToken(success.token));

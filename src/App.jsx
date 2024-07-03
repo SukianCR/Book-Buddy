@@ -13,24 +13,42 @@ import store from "./store.js";
 import { Provider } from "react-redux";
 
 function App() {
-  // const [token, setToken] = useState(null);
+  const [user, setUser] = useState(null);
 
   return (
     <Provider store={store}>
       <>
-        <Navigations />
+        <Navigations user={user} setUser={setUser} />
         <Cabeza />
 
         <div className="cuerpo">
           <Routes>
-            <Route path="/" element={<Books />}></Route>
-            <Route path="/login-register" element={<RegisterLogin />}></Route>
+            <Route
+              path="/"
+              element={<Books user={user} setUser={setUser} />}
+            ></Route>
+            <Route
+              path="/login-register"
+              element={<RegisterLogin user={user} setUser={setUser} />}
+            ></Route>
 
-            <Route path="/register" element={<Register />}></Route>
-            <Route path="/login" element={<Login />}></Route>
-
-            <Route path="/account" element={<Protected />}>
-              <Route path="/account" element={<Account />}></Route>
+            <Route
+              path="/register"
+              element={<Register user={user} setUser={setUser} />}
+            ></Route>
+            <Route
+              path="/login"
+              element={<Login user={user} setUser={setUser} />}
+            ></Route>
+            
+            <Route
+              path="/account"
+              element={<Protected user={user} setUser={setUser} />}
+            >
+              <Route
+                path="/account"
+                element={<Account user={user} setUser={setUser} />}
+              ></Route>
             </Route>
           </Routes>
         </div>

@@ -7,7 +7,7 @@ import { setToken } from "./../api";
 import { Navigate } from "react-router-dom";
 import { useNavigate } from "react-router-dom";
 
-export default function Login() {
+export default function Login({ user, setUser }) {
   const [loginUser] = useLoginMutation();
   const navigate = useNavigate();
   const [form, setForm] = useState();
@@ -27,11 +27,11 @@ export default function Login() {
     try {
       let success = false;
       success = await loginUser(form).unwrap();
-
-      console.log("sux es" + success);
+      console.log("viene token en login", success.token);
 
       if (success) {
         dispatch(setToken(success.token));
+        setUser(success.token);
 
         navigate("/account");
       }
@@ -42,16 +42,7 @@ export default function Login() {
 
   return (
     <>
-      <div className="centro ">
-        <div className="temp_message">
-        <span className="material-symbols-outlined">grade</span>
-
-        <p className="legend">
-          This form works but you have to log in two times - for now
-        </p>
-
-        </div>
-      </div>
+      
 
       <div className="contenedor formulario_solo">
         <div className="hotpink login">
@@ -65,7 +56,6 @@ export default function Login() {
                 className="form-control"
                 placeholder="Email"
                 name="email"
-                // value="rebeca@gmail.com"
                 onChange={updateForm}
                 required
               />

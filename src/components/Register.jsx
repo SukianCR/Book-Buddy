@@ -8,7 +8,7 @@ import { setToken } from "./../api";
 
 import { Navigate, Outlet } from "react-router-dom";
 
-export default function Register() {
+export default function Register({ user, setUser }) {
   const [registerUser] = useRegisterMutation();
 
   const navigate = useNavigate();
@@ -35,10 +35,11 @@ export default function Register() {
         success = await registerUser(form).unwrap();
       }
 
-      console.log("sux es" + success);
+      //  console.log("sux es" + success);
 
       if (success) {
         dispatch(setToken(success.token));
+        setUser(success.user);
         navigate("/account");
       }
     } catch (err) {
@@ -48,16 +49,6 @@ export default function Register() {
 
   return (
     <>
-      <div className="centro ">
-        <div className="temp_message">
-          <span className="material-symbols-outlined">grade</span>
-
-          <p className="legend">
-            This form works but it will take you to the login page after
-            registering where you then login to access your account page.
-          </p>
-        </div>
-      </div>
       <div className="space"></div>
 
       <div className="contenedor formulario_solo">

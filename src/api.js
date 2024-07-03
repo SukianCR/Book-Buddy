@@ -60,6 +60,15 @@ export const api = createApi({
       }),
       providesTags: ["books"],
     }),
+
+    getMeBooks: builder.query({
+      query: () => ({
+        url: "/api/reservations",
+        method: "GET",
+        responseHandler: (response) => response.text(),
+      }),
+      providesTags: ["books"],
+    }),
   }),
 });
 //
@@ -82,16 +91,11 @@ const registerSlice = createSlice({
   extraReducers: (builder) => {
     builder.addMatcher(api.endpoints.register.matchFulfilled, storeToken);
     builder.addMatcher(api.endpoints.login.matchFulfilled, storeToken);
-
-    // builder.addMatcher(
-    //   api.endpoints.getMe.matchFulfilled,
-    //   (state, { payload }) => {
-    //     return JSON.parse(payload);
-    //   }
-    // );
     builder.addMatcher(api.endpoints.getMe.matchFulfilled, storeToken);
     builder.addMatcher(api.endpoints.getBooks.matchFulfilled, storeToken);
     builder.addMatcher(api.endpoints.getBook.matchFulfilled, storeToken);
+    builder.addMatcher(api.endpoints.getMeBooks.matchFulfilled, storeToken);
+    
   },
 });
 
@@ -101,6 +105,7 @@ export const {
   useGetMeQuery,
   useGetBooksQuery,
   useGetBookQuery,
+  useGetMeBooksQuery
 } = api;
 
 export const { setToken } = registerSlice.actions;

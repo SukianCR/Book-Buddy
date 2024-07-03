@@ -4,7 +4,10 @@ import { useState } from "react";
 import BookList from "./BooksList";
 import SelectedBook from "./SelectedBook";
 
-export default function Books() {
+export default function Books({
+  user,
+  setUser,
+}) {
   const [selectedBookId, setSelectedBookId] = useState(null);
 
   return (
