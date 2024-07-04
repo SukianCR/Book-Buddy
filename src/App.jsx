@@ -5,7 +5,6 @@ import Books from "./components/Books";
 import RegisterLogin from "./components/RegisterLogin";
 import Register from "./components/Register";
 import Login from "./components/Login";
-
 import Protected from "./components/Protected";
 import Navigations from "./components/Navigations";
 import Cabeza from "./components/Cabeza";
@@ -14,12 +13,19 @@ import { Provider } from "react-redux";
 
 function App() {
   const [user, setUser] = useState(null);
+  const [email, setEmail] = useState("My Account");
   const [active, setActive] = useState("");
 
   return (
     <Provider store={store}>
       <>
-        <Navigations user={user} setUser={setUser} active={active} />
+        <Navigations
+          user={user}
+          setUser={setUser}
+          active={active}
+          email={email}
+          setEmail={setEmail}
+        />
         <Cabeza />
 
         <div className="cuerpo">
@@ -49,13 +55,23 @@ function App() {
             <Route
               path="/register"
               element={
-                <Register user={user} setUser={setUser}  active={active} setActive={setActive} />
+                <Register
+                  user={user}
+                  setUser={setUser}
+                  active={active}
+                  setActive={setActive}
+                />
               }
             ></Route>
             <Route
               path="/login"
               element={
-                <Login user={user} setUser={setUser}  active={active} setActive={setActive} />
+                <Login
+                  user={user}
+                  setUser={setUser}
+                  active={active}
+                  setActive={setActive}
+                />
               }
             ></Route>
 
@@ -67,6 +83,7 @@ function App() {
                   setUser={setUser}
                   active={active}
                   setActive={setActive}
+                  setEmail={setEmail}
                 />
               }
             >
@@ -78,6 +95,8 @@ function App() {
                     setUser={setUser}
                     active={active}
                     setActive={setActive}
+                    
+                    setEmail={setEmail}
                   />
                 }
               ></Route>

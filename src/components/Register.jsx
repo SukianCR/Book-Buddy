@@ -2,24 +2,18 @@
 import { useState } from "react";
 import { useNavigate } from "react-router-dom";
 import { useRegisterMutation } from "./../api";
-
 import { useSelector, useDispatch } from "react-redux";
 import { setToken } from "./../api";
-
 import { Navigate, Outlet } from "react-router-dom";
 
 export default function Register({ user, setUser, active, setActive }) {
   const [registerUser] = useRegisterMutation();
-
   const navigate = useNavigate();
   const [form, setForm] = useState({});
-
   const [errM, setErrM] = useState(null);
-
   const dispatch = useDispatch();
 
   setActive("register");
-  console.log("active es", active);
 
   const updateForm = (e) => {
     setForm((prev) => ({
@@ -34,15 +28,14 @@ export default function Register({ user, setUser, active, setActive }) {
     try {
       let success = false;
 
-      if (e.target.name == "formRegister") {
-        success = await registerUser(form).unwrap();
-      }
-
-      //  console.log("sux es" + success);
+      success = await registerUser(form).unwrap();
+      console.log("viene token en register", success.token);
 
       if (success) {
         dispatch(setToken(success.token));
+        setUser(null);
         setUser(success.user);
+
         navigate("/account");
       }
     } catch (err) {

@@ -10,7 +10,7 @@ import { useState } from "react";
 import GuestMenu from "./GuestMenu";
 import UserMenu from "./UserMenu";
 
-export default function Navigations({ user, setUser, active }) {
+export default function Navigations({ user, setUser, active, email }) {
   if (!user) {
     return (
       <nav className="navbar navbar-expand-lg ">
@@ -20,7 +20,7 @@ export default function Navigations({ user, setUser, active }) {
   } else {
     return (
       <nav className="navbar navbar-expand-lg ">
-        <UserMenu active={active} />
+        <UserMenu active={active} setUser={setUser} email={email} />
       </nav>
     );
   }

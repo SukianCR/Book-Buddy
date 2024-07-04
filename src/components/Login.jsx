@@ -3,7 +3,6 @@ import { useState } from "react";
 import { useLoginMutation } from "./../api";
 import { useSelector, useDispatch } from "react-redux";
 import { setToken } from "./../api";
-
 import { Navigate } from "react-router-dom";
 import { useNavigate } from "react-router-dom";
 
@@ -16,7 +15,6 @@ export default function Login({ user, setUser, active, setActive }) {
 
   setActive("login");
 
-  console.log("active es", active);
 
   const updateForm = (e) => {
     setForm((prev) => ({
@@ -35,6 +33,7 @@ export default function Login({ user, setUser, active, setActive }) {
 
       if (success) {
         dispatch(setToken(success.token));
+
         setUser(success.token);
 
         navigate("/account");

@@ -1,7 +1,7 @@
 import { useState } from "react";
 import { Link } from "react-router-dom";
 
-export default function UserMenu({ active }) {
+export default function UserMenu({ active, setUser, email }) {
   switch (active) {
     case "books":
       return (
@@ -14,7 +14,7 @@ export default function UserMenu({ active }) {
 
           <li className="nav-item ">
             <Link className="nav-link " to="/account">
-              My account
+              {email}
             </Link>
           </li>
           <li className="nav-item ">
@@ -37,7 +37,7 @@ export default function UserMenu({ active }) {
 
           <li className="nav-item ">
             <Link className="nav-link active " to="/account">
-              My account
+            {email}
             </Link>
           </li>
           <li className="nav-item ">
@@ -59,7 +59,7 @@ export default function UserMenu({ active }) {
           </li>
           <li className="nav-item ">
             <Link className="nav-link active " to="/account">
-              My account
+            {email}
             </Link>
           </li>
           <li className="nav-item ">

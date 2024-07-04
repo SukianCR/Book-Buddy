@@ -87,6 +87,9 @@ const registerSlice = createSlice({
     setToken: (state, { payload }) => {
       state.token = payload;
     },
+    setEmail: (state, { payload }) => {
+      state.email = payload;
+    },
   },
   extraReducers: (builder) => {
     builder.addMatcher(api.endpoints.register.matchFulfilled, storeToken);
@@ -95,7 +98,6 @@ const registerSlice = createSlice({
     builder.addMatcher(api.endpoints.getBooks.matchFulfilled, storeToken);
     builder.addMatcher(api.endpoints.getBook.matchFulfilled, storeToken);
     builder.addMatcher(api.endpoints.getMeBooks.matchFulfilled, storeToken);
-    
   },
 });
 
@@ -105,10 +107,10 @@ export const {
   useGetMeQuery,
   useGetBooksQuery,
   useGetBookQuery,
-  useGetMeBooksQuery
+  useGetMeBooksQuery,
 } = api;
 
-export const { setToken } = registerSlice.actions;
+export const { setToken, setEmail } = registerSlice.actions;
 export default registerSlice.reducer;
 
 export const getUser = (state) => state.register.user;

@@ -6,32 +6,28 @@ import { setToken } from "./../api";
 import { useGetMeQuery } from "./../api";
 import { useGetMeBooksQuery } from "./../api";
 
-export default function Account({ user, setUser }) {
-  console.log("viene user", user);
-  // if (!user) {
-  //   return <>No hay user</>;
-  // } else {
-  //   return (
-  //     <>
-  //       {user.token} - {user.email}
-  //     </>
-  //   );
-  // }
-  // const token = useSelector((state) => state.register.token);
-  // const message = useSelector((state) => state.register.message);
+export default function Account({ user, setUser, setEmail }) {
+ 
+  
 
-  // console.log(token, message);
 
-  // const [meBooks, setMeBooks] = useState([]);
-  // const { data, isSuccess } = useGetMeQuery();
+  const token = useSelector((state) => state.register.token);
+
+  //const [meBooks, setMeBooks] = useState([]);
+  const { data, isSuccess } = useGetMeQuery();
   // const { dataMeBooks, isSuccessMeBooks } = useGetMeBooksQuery();
 
-  // useEffect(() => {
-  //   if (isSuccess) {
-  //     const result = JSON.parse(data);
+  useEffect(() => {
+    if (isSuccess) {
+      const result = JSON.parse(data);
 
-  //     setUser(result);
-  //   }
+      setUser(result);
+     
+    }
+  }, [isSuccess, data]);
+
+  console.log("viene user", user);
+  setEmail(user.email);
   //   if (isSuccessMeBooks) {
   //     const resultMeBooks = JSON.parse(dataMeBooks);
   //     setMeBooks(resultMeBooks);
@@ -42,19 +38,19 @@ export default function Account({ user, setUser }) {
 
   // console.log("user books son ", meBooks);
 
-  // return (
-  //   <>
-  //     <div className="centro">
-  //       <h4 className="space-m playwrite usr-email">{user.email}</h4>{" "}
-  //     </div>
-  //     <div className="centro">
-  //       {meBooks.length > 0 &&
-  //         meBooks.map((book) => {
-  //           return <p key={book.id}> {book.title} </p>;
-  //         })}
-  //     </div>
-  //   </>
-  // );
+  return (
+    <>
+      <div className="centro">
+        <h4 className="space-m playwrite usr-email">{user.email}</h4>{" "}
+      </div>
+      {/* <div className="centro">
+        {meBooks.length > 0 &&
+          meBooks.map((book) => {
+            return <p key={book.id}> {book.title} </p>;
+          })}
+      </div> */}
+    </>
+  );
 }
 
 // const getMe = async () => {
