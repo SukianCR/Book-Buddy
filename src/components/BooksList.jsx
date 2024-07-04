@@ -4,9 +4,10 @@ import { useEffect, useState } from "react";
 import { useGetBooksQuery } from "./../api";
 import BookLi from "./BookLi";
 
-export default function BooksList({ setSelectedBookId }) {
+export default function BooksList({ setSelectedBookId, setActive }) {
   const [books, setBooks] = useState([]);
   const { data, isSuccess } = useGetBooksQuery();
+  setActive("books");
 
   useEffect(() => {
     if (isSuccess) {

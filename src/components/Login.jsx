@@ -7,12 +7,16 @@ import { setToken } from "./../api";
 import { Navigate } from "react-router-dom";
 import { useNavigate } from "react-router-dom";
 
-export default function Login({ user, setUser }) {
+export default function Login({ user, setUser, active, setActive }) {
   const [loginUser] = useLoginMutation();
   const navigate = useNavigate();
   const [form, setForm] = useState();
   const [errML, setErrML] = useState(null);
   const dispatch = useDispatch();
+
+  setActive("login");
+
+  console.log("active es", active);
 
   const updateForm = (e) => {
     setForm((prev) => ({
@@ -42,8 +46,6 @@ export default function Login({ user, setUser }) {
 
   return (
     <>
-      
-
       <div className="contenedor formulario_solo">
         <div className="hotpink login">
           <p className="hotpink playwrite">Login</p>

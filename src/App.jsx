@@ -14,40 +14,72 @@ import { Provider } from "react-redux";
 
 function App() {
   const [user, setUser] = useState(null);
+  const [active, setActive] = useState("");
 
   return (
     <Provider store={store}>
       <>
-        <Navigations user={user} setUser={setUser} />
+        <Navigations user={user} setUser={setUser} active={active} />
         <Cabeza />
 
         <div className="cuerpo">
           <Routes>
             <Route
               path="/"
-              element={<Books user={user} setUser={setUser} />}
+              element={
+                <Books
+                  user={user}
+                  setUser={setUser}
+                  active={active}
+                  setActive={setActive}
+                />
+              }
             ></Route>
             <Route
               path="/login-register"
-              element={<RegisterLogin user={user} setUser={setUser} />}
+              element={
+                <RegisterLogin
+                  user={user}
+                  setUser={setUser}
+                  setActive={setActive}
+                />
+              }
             ></Route>
 
             <Route
               path="/register"
-              element={<Register user={user} setUser={setUser} />}
+              element={
+                <Register user={user} setUser={setUser}  active={active} setActive={setActive} />
+              }
             ></Route>
             <Route
               path="/login"
-              element={<Login user={user} setUser={setUser} />}
+              element={
+                <Login user={user} setUser={setUser}  active={active} setActive={setActive} />
+              }
             ></Route>
-            
+
             <Route
               path="/account"
-              element={<Protected user={user} setUser={setUser} />}
+              element={
+                <Protected
+                  user={user}
+                  setUser={setUser}
+                  active={active}
+                  setActive={setActive}
+                />
+              }
             >
               <Route
                 path="/account"
-                element={<Account user={user} setUser={setUser} />}
+                element={
+                  <Account
+                    user={user}
+                    setUser={setUser}
+                    active={active}
+                    setActive={setActive}
+                  />
+                }
               ></Route>
             </Route>
           </Routes>

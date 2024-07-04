@@ -2,9 +2,14 @@ import { useEffect, useState } from "react";
 
 import { useGetBookQuery } from "./../api";
 
-export default function SelectedBook({ setSelectedBookId, selectedBookId }) {
+export default function SelectedBook({
+  setSelectedBookId,
+  selectedBookId,
+  setActive,
+}) {
   const [book, setBook] = useState({});
   const { data, isSuccess } = useGetBookQuery(selectedBookId);
+  setActive("books");
 
   useEffect(() => {
     if (isSuccess) {
@@ -45,7 +50,7 @@ export default function SelectedBook({ setSelectedBookId, selectedBookId }) {
               className="btn btn-primary "
               onClick={() => {
                 setSelectedBookId(null);
-               // console.log(selectedBookId);
+                // console.log(selectedBookId);
               }}
             >
               Go Back

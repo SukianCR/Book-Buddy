@@ -8,7 +8,7 @@ import { setToken } from "./../api";
 
 import { Navigate, Outlet } from "react-router-dom";
 
-export default function Register({ user, setUser }) {
+export default function Register({ user, setUser, active, setActive }) {
   const [registerUser] = useRegisterMutation();
 
   const navigate = useNavigate();
@@ -17,6 +17,9 @@ export default function Register({ user, setUser }) {
   const [errM, setErrM] = useState(null);
 
   const dispatch = useDispatch();
+
+  setActive("register");
+  console.log("active es", active);
 
   const updateForm = (e) => {
     setForm((prev) => ({
