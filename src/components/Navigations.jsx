@@ -14,13 +14,13 @@ export default function Navigations({ user, setUser, active, email }) {
   if (!user) {
     return (
       <nav className="navbar navbar-expand-lg ">
-        <GuestMenu active={active} />
+        <GuestMenu active={active}  />
       </nav>
     );
   } else {
     return (
       <nav className="navbar navbar-expand-lg ">
-        <UserMenu active={active} setUser={setUser} email={email} />
+        <UserMenu active={active} setUser={setUser} email={email}  />
       </nav>
     );
   }

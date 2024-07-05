@@ -1,7 +1,7 @@
 import { useState } from "react";
 import { Link } from "react-router-dom";
 
-export default function UserMenu({ active, setUser, email }) {
+export default function UserMenu({ active, setUser, email}) {
   switch (active) {
     case "books":
       return (

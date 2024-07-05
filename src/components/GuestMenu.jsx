@@ -1,7 +1,7 @@
 import { useState } from "react";
 import { Link } from "react-router-dom";
 
-export default function GuestMenu({ active}) {
+export default function GuestMenu({ active, myBooks, setMyBooks}) {
   switch (active) {
     case "login":
       return (

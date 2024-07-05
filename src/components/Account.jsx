@@ -4,64 +4,100 @@ import { useEffect, useState } from "react";
 import { useSelector, useDispatch } from "react-redux";
 import { setToken } from "./../api";
 import { useGetMeQuery } from "./../api";
-import { useGetMeBooksQuery } from "./../api";
 
-export default function Account({ user, setUser, setEmail }) {
- 
-  
+import { useNavigate } from "react-router-dom";
+import { useReturnBookMutation } from "../api";
 
+export default function Account({
+  user,
+  setUser,
+  setEmail,
+  myBooks,
+  setMyBooks,
+  token,
+  setToken,
+}) {
+  // const token2 = useSelector((state) => state.register.token);
 
-  const token = useSelector((state) => state.register.token);
-
-  //const [meBooks, setMeBooks] = useState([]);
   const { data, isSuccess } = useGetMeQuery();
-  // const { dataMeBooks, isSuccessMeBooks } = useGetMeBooksQuery();
+  const navigate = useNavigate();
+  const [bookReturned] = useReturnBookMutation();
+  const [errM, setErrM] = useState();
+  const dispatch = useDispatch();
 
+  console.log("token en account es", token);
   useEffect(() => {
     if (isSuccess) {
       const result = JSON.parse(data);
 
       setUser(result);
-     
+      console.log(result);
+      //dispatch(setToken(token));
+      //dispatch(setToken(isSuccess.token));
+      //  dispatch(setToken({ token: token }));
     }
   }, [isSuccess, data]);
 
-  console.log("viene user", user);
   setEmail(user.email);
-  //   if (isSuccessMeBooks) {
-  //     const resultMeBooks = JSON.parse(dataMeBooks);
-  //     setMeBooks(resultMeBooks);
+  setMyBooks(user.books);
+
+  // const returnBook = async (id) => {
+  //   try {
+  //     let success = false;
+
+  //     success = await bookReturned(id).unwrap();
+
+  //     if (success) {
+  //       console.log("sux es:", success);
+  //       navigate("/account");
+  //     }
+  //   } catch (err) {
+  //     //   setErrM(err?.data?.message);
+  //     console.log(err);
   //   }
-  // }, [isSuccess, isSuccessMeBooks, data, dataMeBooks]);
-
-  // console.log("user es", user.email);
-
-  // console.log("user books son ", meBooks);
+  // };
 
   return (
     <>
-      <div className="centro">
-        <h4 className="space-m playwrite usr-email">{user.email}</h4>{" "}
+      <div className="centro columna">
+        <p className="space-m playwrite usr-email">{user.email}</p>
+        <section>
+          <main>
+            <div className="center">
+              <ul className="all-books">
+                {myBooks?.map((book) => {
+                  return (
+                    <li key={book.id} className="player-card">
+                      <img
+                        src={book.coverimage}
+                        alt={book.title}
+                        className="player-image"
+                      />
+                      <div className="player-details">
+                        <h4 className="hotpink">{book.title}</h4>
+                        <p className="author">{book.author}</p>
+                        <p className="desc">{book.description}</p>
+                        {/* <button
+                          className="btn-primary"
+                          onClick={returnBook(book.id)}
+                        >
+                          Retun book
+                        </button> */}
+                      </div>
+                    </li>
+                  );
+                })}
+              </ul>
+              {errM && (
+                <div>
+                  <p className="space"></p>
+                  <p className="error">{errM}</p>
+                </div>
+              )}
+            </div>
+          </main>
+        </section>
       </div>
-      {/* <div className="centro">
-        {meBooks.length > 0 &&
-          meBooks.map((book) => {
-            return <p key={book.id}> {book.title} </p>;
-          })}
-      </div> */}
     </>
   );
 }
-
-// const getMe = async () => {
-//   try {
-//     let success = false;
-//     success = await getMeUser().unwrap();
-//     if (success) {
-//       console.log(success);
-//     }
-//   } catch (err) {
-//     console.log(err);
-//   }
-// };
-// getMe();

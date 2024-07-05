@@ -39,7 +39,7 @@ body {
 .usr-email {
   text-shadow: 0.15em 0.15em 0.2em yellowgreen !important;
   color: #000;
-  font-size: 1.8em;
+  font-size: 1.2em;
 }
 .cabeza {
   display: flex;
@@ -275,4 +275,8 @@ main {
 
 .logo {
   text-decoration: none;
+}
+
+.columna {
+  flex-direction: column;
 }

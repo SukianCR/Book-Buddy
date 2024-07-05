@@ -1,7 +1,9 @@
-export default function BookLi({ setSelectedBookId, book }) {
+import { useTakeBookMutation } from "./../api";
+import { useState } from "react";
+import { useNavigate } from "react-router-dom";
 
+export default function BookLi({ setSelectedBookId, book, user }) {
   return (
-  
     <li
       key={book.id}
       className="player-card"
@@ -19,7 +21,7 @@ export default function BookLi({ setSelectedBookId, book }) {
         </h4>
         <p className="author">{book.author}</p>
         <p className="desc">{book.description}</p>
-        <p>{book.available}</p>
+        {book.available && <p>Available: {book.available}</p>}
       </div>
     </li>
   );

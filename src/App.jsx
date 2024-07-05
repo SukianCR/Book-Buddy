@@ -2,7 +2,7 @@ import { useState } from "react";
 import { Routes, Route, Link } from "react-router-dom";
 import Account from "./components/Account";
 import Books from "./components/Books";
-import RegisterLogin from "./components/RegisterLogin";
+
 import Register from "./components/Register";
 import Login from "./components/Login";
 import Protected from "./components/Protected";
@@ -15,6 +15,9 @@ function App() {
   const [user, setUser] = useState(null);
   const [email, setEmail] = useState("My Account");
   const [active, setActive] = useState("");
+  const [selectedBookId, setSelectedBookId] = useState(null);
+  const [myBooks, setMyBooks] = useState([]);
+  const [token, setToken] = useState(null);
 
   return (
     <Provider store={store}>
@@ -38,16 +41,8 @@ function App() {
                   setUser={setUser}
                   active={active}
                   setActive={setActive}
-                />
-              }
-            ></Route>
-            <Route
-              path="/login-register"
-              element={
-                <RegisterLogin
-                  user={user}
-                  setUser={setUser}
-                  setActive={setActive}
+                  selectedBookId={selectedBookId}
+                  setSelectedBookId={setSelectedBookId}
                 />
               }
             ></Route>
@@ -60,6 +55,11 @@ function App() {
                   setUser={setUser}
                   active={active}
                   setActive={setActive}
+                  setEmail={setEmail}
+                  myBooks={myBooks}
+                  setMyBooks={setMyBooks}
+                  token={token}
+                  setToken={setToken}
                 />
               }
             ></Route>
@@ -71,21 +71,18 @@ function App() {
                   setUser={setUser}
                   active={active}
                   setActive={setActive}
+                  setEmail={setEmail}
+                  myBooks={myBooks}
+                  setMyBooks={setMyBooks}
+                  token={token}
+                  setToken={setToken}
                 />
               }
             ></Route>
 
             <Route
               path="/account"
-              element={
-                <Protected
-                  user={user}
-                  setUser={setUser}
-                  active={active}
-                  setActive={setActive}
-                  setEmail={setEmail}
-                />
-              }
+              element={<Protected user={user} setUser={setUser} />}
             >
               <Route
                 path="/account"
@@ -95,8 +92,11 @@ function App() {
                     setUser={setUser}
                     active={active}
                     setActive={setActive}
-                    
                     setEmail={setEmail}
+                    myBooks={myBooks}
+                    setMyBooks={setMyBooks}
+                    token={token}
+                    setToken={setToken}
                   />
                 }
               ></Route>

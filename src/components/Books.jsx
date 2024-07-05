@@ -4,8 +4,8 @@ import { useState } from "react";
 import BookList from "./BooksList";
 import SelectedBook from "./SelectedBook";
 
-export default function Books({ user, setUser, active, setActive }) {
-  const [selectedBookId, setSelectedBookId] = useState(null);
+export default function Books({ user, setUser, active, setActive, selectedBookId, setSelectedBookId }) {
+  
   setActive("books");
   console.log("active es", active);
   return (
@@ -15,9 +15,10 @@ export default function Books({ user, setUser, active, setActive }) {
           setSelectedBookId={setSelectedBookId}
           selectedBookId={selectedBookId}
           setActive={setActive}
+          user={user}
         />
       ) : (
-        <BookList setSelectedBookId={setSelectedBookId} setActive={setActive} />
+        <BookList setSelectedBookId={setSelectedBookId} user={user} />
       )}
     </>
   );

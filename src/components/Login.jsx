@@ -3,18 +3,27 @@ import { useState } from "react";
 import { useLoginMutation } from "./../api";
 import { useSelector, useDispatch } from "react-redux";
 import { setToken } from "./../api";
-import { Navigate } from "react-router-dom";
-import { useNavigate } from "react-router-dom";
+import Account from "./Account";
 
-export default function Login({ user, setUser, active, setActive }) {
+export default function Login({
+  user,
+  setUser,
+  active,
+  setActive,
+  setEmail,
+  myBooks,
+  setMyBooks,
+  token,
+  setToken,
+}) {
   const [loginUser] = useLoginMutation();
-  const navigate = useNavigate();
+
   const [form, setForm] = useState();
   const [errML, setErrML] = useState(null);
   const dispatch = useDispatch();
+  //const token2 = useSelector((state) => state.register.token);
 
   setActive("login");
-
 
   const updateForm = (e) => {
     setForm((prev) => ({
@@ -32,23 +41,27 @@ export default function Login({ user, setUser, active, setActive }) {
       console.log("viene token en login", success.token);
 
       if (success) {
-        dispatch(setToken(success.token));
+        // dispatch(setToken(success?.token));
+       // dispatch(setToken({token:success.token}));
+        setToken(success.token);
+        console.log("token en login", success.token);
 
         setUser(success.token);
-
-        navigate("/account");
       }
     } catch (err) {
-      setErrML(err.data.message);
+      //   setErrML(err.data.message);
+      console.log(err);
     }
-  };
+  }; //setEmail(user.email);
 
-  return (
-    <>
+  console.log("buscando el email", user);
+  if (!user) {
+    return (
       <div className="contenedor formulario_solo">
         <div className="hotpink login">
           <p className="hotpink playwrite">Login</p>
           <p className="space"></p>
+
           <form onSubmit={submit} name="formLogin" className="sube_poco">
             <div className="form-group">
               <label></label>
@@ -62,7 +75,7 @@ export default function Login({ user, setUser, active, setActive }) {
               />
             </div>
             <div className="form-group">
-              <label></label>
+              <label> </label>
               <input
                 type="password"
                 className="form-control"
@@ -85,6 +98,21 @@ export default function Login({ user, setUser, active, setActive }) {
           )}
         </div>
       </div>
-    </>
-  );
+    );
+  } else {
+    return (
+      <>
+        <Account
+          user={user}
+          setUser={setUser}
+          setEmail={setEmail}
+          myBooks={myBooks}
+          setMyBooks={setMyBooks}
+          token={token}
+          setToken={setToken}
+        />
+        ;
+      </>
+    );
+  }
 }

@@ -34,6 +34,23 @@ export const api = createApi({
       invalidateTags: ["User"],
     }),
 
+    takeBook: builder.mutation({
+      query: (credentials, bookId) => ({
+        url: `/api/books/${bookId}`,
+        method: "PATCH",
+        body: credentials,
+      }),
+      invalidateTags: ["books"],
+    }),
+
+    returnBook: builder.mutation({
+      query: (bookId) => ({
+        url: `/api/reservations/${bookId}`,
+        method: "DELETE",
+      }),
+      invalidateTags: ["books"],
+    }),
+
     getMe: builder.query({
       query: () => ({
         url: "/api/users/me",
@@ -61,7 +78,7 @@ export const api = createApi({
       providesTags: ["books"],
     }),
 
-    getMeBooks: builder.query({
+    getMyBooks: builder.query({
       query: () => ({
         url: "/api/reservations",
         method: "GET",
@@ -97,17 +114,21 @@ const registerSlice = createSlice({
     builder.addMatcher(api.endpoints.getMe.matchFulfilled, storeToken);
     builder.addMatcher(api.endpoints.getBooks.matchFulfilled, storeToken);
     builder.addMatcher(api.endpoints.getBook.matchFulfilled, storeToken);
-    builder.addMatcher(api.endpoints.getMeBooks.matchFulfilled, storeToken);
+    builder.addMatcher(api.endpoints.getMyBooks.matchFulfilled, storeToken);
+    builder.addMatcher(api.endpoints.takeBook.matchFulfilled, storeToken);
+    builder.addMatcher(api.endpoints.returnBook.matchFulfilled, storeToken);
   },
 });
 
 export const {
   useRegisterMutation,
   useLoginMutation,
+  useTakeBookMutation,
+  useReturnBookMutation,
   useGetMeQuery,
   useGetBooksQuery,
   useGetBookQuery,
-  useGetMeBooksQuery,
+  useGetMyBooksQuery,
 } = api;
 
 export const { setToken, setEmail } = registerSlice.actions;
