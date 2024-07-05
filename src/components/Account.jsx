@@ -15,7 +15,6 @@ export default function Account({
   myBooks,
   setMyBooks,
   token,
-  setToken,
 }) {
   // const token2 = useSelector((state) => state.register.token);
 
@@ -31,31 +30,36 @@ export default function Account({
       const result = JSON.parse(data);
 
       setUser(result);
-      console.log(result);
-      //dispatch(setToken(token));
-      //dispatch(setToken(isSuccess.token));
-      //  dispatch(setToken({ token: token }));
+      console.log("nuevo user es", result);
+     
     }
   }, [isSuccess, data]);
 
   setEmail(user.email);
   setMyBooks(user.books);
+  console.log(myBooks);
 
-  // const returnBook = async (id) => {
-  //   try {
-  //     let success = false;
+  const rBO = (id) => {
+    console.log("book id", id);
+    // try {
+    //   let success = false;
+    //   console.log("entro a rb y token es", token);
+    //   dispatch(setToken({ token }));
 
-  //     success = await bookReturned(id).unwrap();
+    //   success = await bookReturned(id).unwrap();
+    //   console.log("token en account", token);
 
-  //     if (success) {
-  //       console.log("sux es:", success);
-  //       navigate("/account");
-  //     }
-  //   } catch (err) {
-  //     //   setErrM(err?.data?.message);
-  //     console.log(err);
-  //   }
-  // };
+    //   console.log("viene de return book", success);
+    //   setMyBooks(myBooks);
+    //   navigate("/account");
+    //   if (success) {
+    //     console.log("si lo devolvio");
+    //   }
+    // } catch (err) {
+    //   //setErrM(err.data.message);
+    //   console.log(err);
+    // }
+  };
 
   return (
     <>
@@ -78,9 +82,14 @@ export default function Account({
                         <p className="author">{book.author}</p>
                         <p className="desc ">{book.description}</p>
                         <p className="space-s"></p>
-                        <button className="btn btn-primary ">
-                          Return Book
-                        </button>
+                        {user && (
+                          <button
+                            className="btn btn-primary"
+                            onClick={rBO(book.id)}
+                          >
+                            Return Book
+                          </button>
+                        )}
                       </div>
                     </li>
                   );

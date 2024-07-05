@@ -24,6 +24,7 @@ export default function BookLi({ setSelectedBookId, book, user, token }) {
       console.log("token3", token);
 
       console.log("viene de take book", success);
+      setSelectedBookId(0);
       navigate("/account");
       if (success) {
         console.log("si lo tomo");
