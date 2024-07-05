@@ -43,6 +43,8 @@ function App() {
                   setActive={setActive}
                   selectedBookId={selectedBookId}
                   setSelectedBookId={setSelectedBookId}
+                  token={token}
+                  setToken={setToken}
                 />
               }
             ></Route>
