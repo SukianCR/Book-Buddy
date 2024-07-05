@@ -45,6 +45,8 @@ function App() {
                   setSelectedBookId={setSelectedBookId}
                   token={token}
                   setToken={setToken}
+                  myBooks={myBooks}
+                  setMyBooks={setMyBooks}
                 />
               }
             ></Route>
@@ -98,7 +100,6 @@ function App() {
                     myBooks={myBooks}
                     setMyBooks={setMyBooks}
                     token={token}
-                    
                   />
                 }
               ></Route>

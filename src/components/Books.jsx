@@ -13,6 +13,8 @@ export default function Books({
   setSelectedBookId,
   token,
   setToken,
+  myBooks,
+  setMyBooks,
 }) {
   setActive("books");
   console.log("active es", active);
@@ -29,12 +31,13 @@ export default function Books({
         <BookList
           setSelectedBookId={setSelectedBookId}
           user={user}
+          setUser={setUser}
           token={token}
           setToken={setToken}
+          myBooks={myBooks}
+          setMyBooks={setMyBooks}
         />
       )}
     </>
   );
 }
-
-

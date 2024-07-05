@@ -42,14 +42,14 @@ export default function Login({
 
       if (success) {
         // dispatch(setToken(success?.token));
-       // dispatch(setToken({token:success.token}));
+        // dispatch(setToken({token:success.token}));
         setToken(success.token);
         console.log("token en login", success.token);
 
         setUser(success.token);
       }
     } catch (err) {
-      //   setErrML(err.data.message);
+      setErrML(err.data.message);
       console.log(err);
     }
   }; //setEmail(user.email);
