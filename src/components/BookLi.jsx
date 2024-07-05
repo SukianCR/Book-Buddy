@@ -11,6 +11,7 @@ export default function BookLi({ setSelectedBookId, book, user, token }) {
   const [errM, setErrM] = useState(null);
   const token3 = useSelector((state) => state.register.token);
   console.log("token3", token3);
+  const navigate = useNavigate();
 
   const ChO = async () => {
     try {
@@ -23,6 +24,7 @@ export default function BookLi({ setSelectedBookId, book, user, token }) {
       console.log("token3", token);
 
       console.log("viene de take book", success);
+      navigate("/account");
       if (success) {
         console.log("si lo tomo");
       }
