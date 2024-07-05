@@ -54,7 +54,6 @@ export default function Login({
     }
   }; //setEmail(user.email);
 
-  console.log("buscando el email", user);
   if (!user) {
     return (
       <div className="contenedor formulario_solo">
