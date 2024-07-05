@@ -9,6 +9,8 @@ export default function BookLi({ setSelectedBookId, book, user, token }) {
   const [bookTaken] = useTakeBookMutation();
   const dispatch = useDispatch();
   const [errM, setErrM] = useState(null);
+  const token3 = useSelector((state) => state.register.token);
+  console.log("token3", token3);
 
   const ChO = async () => {
     try {
@@ -16,7 +18,10 @@ export default function BookLi({ setSelectedBookId, book, user, token }) {
       const id = book.id;
       console.log("entro a cho y token es", token);
       dispatch(setToken({ token }));
+
       success = await bookTaken(id).unwrap();
+      console.log("token3", token);
+
       console.log("viene de take book", success);
       if (success) {
         console.log("si lo tomo");
@@ -62,14 +67,14 @@ export default function BookLi({ setSelectedBookId, book, user, token }) {
               Not Available
             </button>
           )}
-            {errM && (
-              <>
+
+          {errM && (
+            <div>
               <p className="space"></p>
-            <p className="error">Error: {errM}</p>
-            </>
-        )}
+              <p className="error">Error: {errM}</p>
+            </div>
+          )}
         </div>
-      
       </li>
     );
   }

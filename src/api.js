@@ -35,10 +35,10 @@ export const api = createApi({
     }),
 
     takeBook: builder.mutation({
-      query: (credentials, bookId) => ({
+      query: (bookId) => ({
         url: `/api/books/${bookId}`,
         method: "PATCH",
-        body: credentials,
+        body: { available: true },
       }),
       invalidateTags: ["books"],
     }),
@@ -102,7 +102,7 @@ const registerSlice = createSlice({
   initialState,
   reducers: {
     setToken: (state, { payload }) => {
-      state.token = payload;
+      state.token = payload.token;
     },
     setEmail: (state, { payload }) => {
       state.email = payload;
