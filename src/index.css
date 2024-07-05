@@ -183,10 +183,14 @@ input,
 .btn-primary {
   background-color: #ff69b4 !important;
   color: #fffdd0 !important;
+  border: #fffdd0 1px solid;
 }
 
 .space {
   padding: 0.7em;
+}
+.space-s {
+  padding: 0.4em;
 }
 .space-m {
   padding: 1.2em;

@@ -76,13 +76,11 @@ export default function Account({
                       <div className="player-details">
                         <h4 className="hotpink">{book.title}</h4>
                         <p className="author">{book.author}</p>
-                        <p className="desc">{book.description}</p>
-                        {/* <button
-                          className="btn-primary"
-                          onClick={returnBook(book.id)}
-                        >
-                          Retun book
-                        </button> */}
+                        <p className="desc ">{book.description}</p>
+                        <p className="space-s"></p>
+                        <button className="btn btn-primary ">
+                          Return Book
+                        </button>
                       </div>
                     </li>
                   );
